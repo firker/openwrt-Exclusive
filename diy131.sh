@@ -7,7 +7,9 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #=============================================================
-mv -f ../Makefile ./target/linux/x86/Makefile
+git clone https://github.com/firker/neihe.git
+
+mv -f ../neihe/Makefile ./target/linux/x86/Makefile
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
