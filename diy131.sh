@@ -9,7 +9,7 @@
 #=============================================================
 git clone https://github.com/firker/neihe.git
 
-mv -f ../neihe/Makefile ./target/linux/x86/Makefile
+mv -f neihe/Makefile ./target/linux/x86/Makefile
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
