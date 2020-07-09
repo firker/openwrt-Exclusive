@@ -7,7 +7,7 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #=============================================================
-mv -f ../neihe/Makefile ./target/linux/x86/Makefile
+mv -f ../Makefile ./target/linux/x86/Makefile
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
