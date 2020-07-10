@@ -19,8 +19,17 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 # mv -vf ../mt7621_phicomm_k2p.dts ./target/linux/ramips/dts/mt7621_phicomm_k2p.dts
 
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+#　git clone https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFiltermkdir package/luci-app-openclash
+
+mkdir package/luci-app-openclash
+cd package/luci-app-openclash
+git init
+git remote add -f origin https://github.com/vernesong/OpenClash.git
+git config core.sparsecheckout true
+echo "luci-app-openclash" >> .git/info/sparse-checkout
+git pull origin master && cd ..
+
 svn co https://github.com/Lienol/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
 svn co https://github.com/Lienol/openwrt-package/trunk/package/brook package/brook
 svn co https://github.com/Lienol/openwrt-package/trunk/package/chinadns-ng package/chinadns-ng
