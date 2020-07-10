@@ -7,7 +7,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-lede4.19
+name: OpenWrt-lede 4.19
 
 on:
   repository_dispatch:
@@ -20,8 +20,8 @@ on:
       - '.config'
   schedule:
     - cron: 0 19 */5 * * 
-#  watch:
-#    types: started
+  watch:
+    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
