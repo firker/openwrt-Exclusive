@@ -11,5 +11,6 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-cp -r feeds/lienol/lienol/luci-app-passwall feeds/diy && cp -r feeds/lienol/package/{chinadns-ng,trojan-go,syncthing,tcping} feeds/diy/vssr
+cp -r feeds/lienol/lienol/luci-app-passwall feeds/diy
+cp -r feeds/lienol/package/{chinadns-ng,trojan-go,syncthing,tcping} feeds/diy/vssr
 rm -rf ./feeds/{lienol,lienol.tmp}
