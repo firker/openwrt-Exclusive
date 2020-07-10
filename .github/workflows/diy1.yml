@@ -71,8 +71,13 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
     - name: 下载feeds插件
-      run: cd openwrt && ./scripts/feeds update -a
-
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a
+        cp -a feeds/lienol/lienol/luci-app-passwall feeds/diy
+        cp -a feeds/lienol/package/{chinadns-ng,trojan-go,syncthing,tcping} feeds/diy/vssr
+        rm -rf ./feeds/{lienol,lienol.tmp}
+        
     - name: 安装feeds插件
       run: cd openwrt && ./scripts/feeds install -a
 
