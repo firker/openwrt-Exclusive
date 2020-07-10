@@ -7,7 +7,7 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #=============================================================
-git clone https://github.com/firker/neihe.git
+# git clone https://github.com/firker/neihe.git
 
 # mv -f neihe/Makefile ./target/linux/x86/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=4.19/g' ./target/linux/x86/Makefile
