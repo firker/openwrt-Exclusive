@@ -10,11 +10,11 @@ name: OpenWrt-lede5.4
 
 on:
   repository_dispatch:
-  release:
-    types: published
-  push:
-    branches:
-      - master
+#  release:
+#    types: published
+#  push:
+#    branches:
+#      - master
 #    paths:
 #      - '.config'
   schedule:
