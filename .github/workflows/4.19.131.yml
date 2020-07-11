@@ -16,7 +16,7 @@ on:
     branches:
       - master
     paths:
-      - '.config'
+      - '4.config'
   schedule:
     - cron: 0 18 */3 * *
   watch:
