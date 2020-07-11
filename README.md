@@ -1,9 +1,9 @@
 
 # P3TERX大佬opwnert固件云编译脚本
 
-云编译地址：https://github.com/P3TERX/Actions-OpenWrt
+云编译脚本地址：https://github.com/P3TERX/Actions-OpenWrt
 
-固件源码地址：https://github.com/coolsnowwolf/openwrt
+固件源码地址：https://github.com/coolsnowwolf/lede
 
 lean最新源码版本，内核为5.4版和4.19版
 
@@ -18,3 +18,4 @@ lean最新源码版本，内核为5.4版和4.19版
 ## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)
 ![avatar](boc/c.png)
 [tg频道订阅](https://t.me/zhinengchaoshenzhe)
+
