@@ -9,7 +9,7 @@ lean最新源码版本，内核为5.4版和4.19版
 
 自动每3天更新一次，手动不定时更新
 
-> ip：192.168.1.1 密码：password
+> `ip：192.168.1.1 密码：password`
 
 稳定版云编译项目：[https://github.com/firkerword/openwrt-stable-version](https://github.com/firkerword/openwrt-stable-version)
 
