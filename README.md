@@ -13,6 +13,8 @@ lean最新源码版本，内核为5.4版和4.19版
 
 稳定版云编译项目：https://github.com/firkerword/openwrt-stable-version
 
+感谢各位大佬的源码。
+
 ## 固件截图：
 ![avatar](boc/b.png)
 ## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)
