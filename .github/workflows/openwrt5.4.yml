@@ -43,7 +43,7 @@ jobs:
 
     steps:
     - name: 准备工作
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
     - name: 搭建编译环境
       env:
@@ -115,7 +115,7 @@ jobs:
       run: df -hT
 
     - name: 上传bin目录插件
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
@@ -131,7 +131,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: 上传编译好的固件
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
