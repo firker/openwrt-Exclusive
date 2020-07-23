@@ -14,7 +14,7 @@ on:
 #    types: published
 #  push:
 #    branches:
-#      - master
+#      - main
 #    paths:
 #      - '.config'
   schedule:
@@ -87,7 +87,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH云窗口
-      uses: P3TERX/debugger-action@master
+      uses: P3TERX/debugger-action@main
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: 下载package文档
