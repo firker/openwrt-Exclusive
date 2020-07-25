@@ -28,3 +28,4 @@ svn co https://github.com/Lienol/openwrt-package/trunk/package/chinadns-ng packa
 svn co https://github.com/Lienol/openwrt-package/trunk/package/tcping package/tcping
 svn co https://github.com/Lienol/openwrt-package/trunk/package/trojan-go package/trojan-go
 svn co https://github.com/Lienol/openwrt-package/trunk/package/syncthing package/syncthing
+mkdir dl && cd dl && wget https://static.adguard.com/adguardhome/release/AdGuardHome_linux_amd64.tar.gz && cd ..
