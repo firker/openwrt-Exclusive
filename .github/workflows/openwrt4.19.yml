@@ -84,7 +84,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     - name: SSH链接管理
-      uses: P3TERX/debugger-action@main
+      uses: firker/debugger-action@main
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: 下载安装包
