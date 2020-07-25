@@ -43,10 +43,10 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Checkout
+    - name: 检查项目分支
       uses: actions/checkout@main
 
-    - name: Initialization environment
+    - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -58,36 +58,36 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-    - name: Clone source code
+    - name: 下载固件源码
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    - name: Load custom feeds
+    - name: 加载自定义设置
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: Update feeds
+    - name: 下载插件
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: 读取插件
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Load custom configuration
+    - name: 更改设置
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-    - name: SSH connection to Actions
+    - name: SSH链接管理
       uses: P3TERX/debugger-action@main
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
-    - name: Download package
+    - name: 下载安装包
       id: package
       run: |
         cd openwrt
@@ -95,7 +95,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-    - name: Compile the firmware
+    - name: 开始编译固件
       id: compile
       run: |
         cd openwrt
@@ -105,18 +105,18 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::set-env name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
-    - name: Check space usage
+    - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload bin directory
+    - name: 上传bin压缩目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
-    - name: Organize files
+    - name: 整理编译好的固件
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
@@ -124,20 +124,20 @@ jobs:
         rm -rf packages
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
-    - name: Upload firmware directory
+    - name: 上传固件到github
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_4.19${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Upload firmware to cowtransfer
+    - name: 上传固件到NN网盘
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-    - name: Upload firmware to WeTransfer
+    - name: 上传固件到WT网盘
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
@@ -154,7 +154,7 @@ jobs:
         echo "🔍 [WeTransfer](${{ env.WETRANSFER_URL }})" >> release.txt
         echo "::set-output name=status::success"
     
-    - name: 上传固件发布Release
+    - name: 上传固件并发布
       uses: softprops/action-gh-release@v1
       if: env.DEBUG_MODEL == 'false' && steps.tag.outputs.status == 'success' && !cancelled()
       env:
