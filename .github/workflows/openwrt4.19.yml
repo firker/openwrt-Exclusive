@@ -9,12 +9,12 @@
 name: OpenWrt-lede4.19
 
 on:
-#  repository_dispatch:
-#  release:
-#    types: published
-#  push:
-#    branches:
-#      - main
+  repository_dispatch:
+  release:
+    types: published
+  push:
+    branches:
+      - main
 #    paths:
 #      - '4.config'
   schedule:
