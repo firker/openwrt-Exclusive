@@ -12,9 +12,9 @@ on:
   repository_dispatch:
   release:
     types: published
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
 #    paths:
 #      - '4.config'
   schedule:
