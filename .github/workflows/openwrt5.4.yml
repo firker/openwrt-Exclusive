@@ -9,9 +9,9 @@
 name: OpenWrt-lede5.4
 
 on:
-#  repository_dispatch:
-#  release:
-#    types: published
+  repository_dispatch:
+  release:
+    types: published
 #  push:
 #    branches:
 #      - main
