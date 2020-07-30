@@ -128,10 +128,13 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
+        echo "${{ env.useVersionInfo }}" > openwrt/bin/targets/x86/64/更新说明.md
+        rm -rf openwrt/bin/targets/x86/64/packages
         cd openwrt/bin/targets/*/*
-        rm -rf packages
+        rm -rf 更新说明.md
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
+        
     - name: 上传固件到github
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
