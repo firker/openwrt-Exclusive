@@ -45,7 +45,7 @@ jobs:
     
     steps:
     - name: 微信报告
-      run: curl https://sc.ftqq.com/${{ secrets.ServerChan }}.send?text=${{ env.FILE_NAME }}最新版4.19开始编译
+      run: curl https://sc.ftqq.com/${{ secrets.ServerChan }}.send?text=${{ env.FILE_NAME }}开始编译
       
     - name: 检查项目分支
       uses: actions/checkout@main
