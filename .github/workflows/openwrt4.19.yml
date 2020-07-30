@@ -36,7 +36,7 @@ env:
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
   TZ: Asia/Shanghai
-  FILE_NAME: openwrt-64最新版
+  FILE_NAME: openwrt-最新版4.19
 
 jobs:
   build:
@@ -146,7 +146,7 @@ jobs:
       uses: ncipollo/release-action@v1
       if: env.UPLOAD_RELEASE == 'true' && steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.DATE }} 📀 openwrtx64最新版 | 自动编译
+        name: ${{ env.DATE }} 📀 openwrt-最新版4.19 | 自动编译
         allowUpdates: true
         tag: openwrt-最新版4.19
         commit: main
