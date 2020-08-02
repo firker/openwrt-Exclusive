@@ -163,3 +163,7 @@ jobs:
         tag_name: ${{ env.RELEASE_TAG }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
+
+    - name: 微信报告
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      run: curl https://sc.ftqq.com/${{ secrets.SERVERCHAN }}.send?text=${{ env.FILE_NAME }}发布成功-编译结束
