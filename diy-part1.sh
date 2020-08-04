@@ -29,4 +29,5 @@ svn co https://github.com/Lienol/openwrt-package/trunk/package/brook package/bro
 svn co https://github.com/Lienol/openwrt-package/trunk/package/chinadns-ng package/chinadns-ng
 svn co https://github.com/Lienol/openwrt-package/trunk/package/tcping package/tcping
 svn co https://github.com/Lienol/openwrt-package/trunk/package/trojan-go package/trojan-go
+svn co https://github.com/Lienol/openwrt-package/trunk/package/trojan-plus package/trojan-plus
 svn co https://github.com/Lienol/openwrt-package/trunk/package/syncthing package/syncthing
