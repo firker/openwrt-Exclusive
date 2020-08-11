@@ -21,5 +21,8 @@ lean最新源码版本，内核为***5.4***版和***4.19***版
 ![avatar](boc/b.png)
 ## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)  选择需要的版本
 ![avatar](boc/c.png)
-# 联系[tg频道订阅](https://t.me/zhinengchaoshenzhe)
+## 联系[tg频道订阅](https://t.me/zhinengchaoshenzhe)
 
+如果你觉得我的努力对你有所帮助，可以请我喝杯饮料，我会更加努力做到更好，谢谢！
+### 微信（Wechat）
+![avatar](boc/m.jpg)
