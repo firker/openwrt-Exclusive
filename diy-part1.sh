@@ -22,7 +22,6 @@ git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
 git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFiltermkdir package/OpenAppFiltermkdir
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
 svn co https://github.com/firker/diy-ziyong/trunk/smartdns package/smartdns
 svn co https://github.com/xiaorouji/openwrt-package/trunk/lienol/luci-app-passwall package/luci-app-passwall
