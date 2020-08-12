@@ -4,7 +4,7 @@
 
 固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)
 
-lean最新源码版本，内核为***5.4***版和***4.19***版
+lean最新源码版本，内核为***5.4***（ipv6）版和***4.19***版
 
 自动每3天更新一次，手动不定时更新
 
@@ -17,7 +17,7 @@ lean最新源码版本，内核为***5.4***版和***4.19***版
 ## 固件截图：
 4.19版
 ![avatar](boc/d.png)
-5.4版
+5.4版（支持IPV6）
 ![avatar](boc/b.png)
 ## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)  选择需要的版本
 ![avatar](boc/c.png)
