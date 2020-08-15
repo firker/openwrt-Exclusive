@@ -29,6 +29,3 @@ project-openwrt  18.06源码版本，内核为***4.19***版（同步linux4.19内
 ![avatar](boc/c.png)
 ## 联系[tg频道订阅](https://t.me/zhinengchaoshenzhe)
 
-如果你觉得我的努力对你有所帮助，可以请我喝杯饮料，我会更加努力做到更好，谢谢！
-### 微信（Wechat）
-![avatar-w50](boc/m.jpg)
