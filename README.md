@@ -18,7 +18,7 @@ project-openwrt  18.06源码版本，内核为***4.19***版（同步linux4.19内
 
 稳定版云编译项目：[https://github.com/firkerword/openwrt-stable-version](https://github.com/firkerword/openwrt-stable-version)
 
-感谢各位大佬的源码。
+感谢所有openwrt固件源码作者以及所有插件源码作者。
 
 ## 固件截图：
 ### 4.19版
