@@ -8,9 +8,9 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt](https://github.com/project-openwrt/openwrt)
 
-lean最新源码版本，内核为***5.4***（ipv6）版和***4.19***版
+lean源码版本，内核为***5.4***（ipv6）版和***4.19***版
 
-project-openwrt 源码版本，内核为***4.19***版（同步linux4.19内核）
+project-openwrt源码版本，内核为***4.19***版（同步linux4.19内核）
 
 自动每3天更新一次，手动不定时更新
 
