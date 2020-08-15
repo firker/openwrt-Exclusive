@@ -1,4 +1,4 @@
-# lede大openwrt-X86-64追新版 & P3TERX大opwnert云编译脚本
+# openwrt18.06-X86-64最新版 & P3TERX大opwnert云编译脚本
 
 云编译脚本地址：[https://github.com/P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 
