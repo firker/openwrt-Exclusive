@@ -2,9 +2,11 @@
 
 云编译脚本地址：[https://github.com/P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 
-固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)
+lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)
+project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt](https://github.com/project-openwrt/openwrt)
 
 lean最新源码版本，内核为***5.4***（ipv6）版和***4.19***版
+project-openwrt  18.06源码版本，内核为***4.19***版（同步linux4.19内核）
 
 自动每3天更新一次，手动不定时更新
 
