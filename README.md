@@ -10,7 +10,7 @@ project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt]
 
 lean源码版本，内核为***5.4***（ipv6）版和***4.19***版
 
-project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](https://fossies.org/linux/kernel/v4.19/))
+project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](https://www.kernel.org/))
 
 自动每3天更新一次，手动不定时更新
 
