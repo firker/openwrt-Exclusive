@@ -1,6 +1,8 @@
-# openwrt18.06-X86-64最新版 & P3TERX大opwnert云编译脚本
+# OpenWrt18.06-X86-64最新版云编译脚本
 
-云编译脚本地址：[https://github.com/P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
+## 固件来源：
+
+P3TERX云编译脚本地址：[https://github.com/P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 
 lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.com/coolsnowwolf/lede)
 
