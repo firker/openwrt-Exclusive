@@ -16,3 +16,5 @@ rm -rf ./package/ntlf9t/AdGuardHome
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./package/ntlf9t/luci-app-smartdns
 rm -rf ./package/ntlf9t/smartdns
+rm -rf ./package/ntlf9t/openwrt-udp2raw
+rm -rf ./package/ntlf9t/dnscrypt-proxy-full
