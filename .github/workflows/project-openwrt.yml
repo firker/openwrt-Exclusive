@@ -149,7 +149,7 @@ jobs:
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer wss -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wenshushu.log
-        echo "::warning file=wenshushu.com::$(cat wenshushu.log | grep https)"
+        echo "::warning file=wenshushu.cn::$(cat wenshushu.log | grep https)"
         
     - name: 创建tag标签
       id: tag
