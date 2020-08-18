@@ -142,7 +142,7 @@ jobs:
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
+        ./transfer wet -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
     - name: 上传固件到文叔叔
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WENSHUSHU == 'true' && !cancelled()
