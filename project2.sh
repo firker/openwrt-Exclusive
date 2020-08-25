@@ -15,6 +15,7 @@ rm -rf ./package/ctcgfw/luci-theme-argon-mod
 rm -rf ./package/ctcgfw/luci-app-unblockneteasemusic
 rm -rf ./package/ctcgfw/luci-app-unblockneteasemusic-mini
 rm -rf ./package/lean/luci-theme-argon
+rm -rf ./package/lean/luci-app-unblockneteasemusic-go
 rm -rf ./package/ntlf9t/AdGuardHome
 rm -rf ./package/ntlf9t/luci-app-smartdns
 rm -rf ./package/ntlf9t/smartdns
