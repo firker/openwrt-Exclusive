@@ -25,6 +25,8 @@ project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](htt
 ![avatar](boc/d.png)
 ### 5.4版（支持IPV6）
 ![avatar](boc/b.png)
+### project 4.19版
+![avatar](boc/e.png)
 ## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)  选择需要的版本
 ![avatar](boc/c.png)
 ## 联系[Tg频道订阅](https://t.me/zhinengchaoshenzhe)
