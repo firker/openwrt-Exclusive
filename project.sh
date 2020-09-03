@@ -22,3 +22,4 @@ curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/powero
 # sed -i "s/DISTRIB_DESCRIPTION='OpenWrt 18.06 by Lean '/DISTRIB_DESCRIPTION='OpenWrt '/g" ./package/lean/default-settings/files/zzz-default-settings
 git clone https://github.com/firker/diy-ziyong package/diy-ziyong
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/naiveproxy package/naiveproxy
