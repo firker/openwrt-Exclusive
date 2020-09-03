@@ -33,3 +33,5 @@ svn co https://github.com/xiaorouji/openwrt-package/trunk/package/tcping package
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-go package/trojan-go
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/trojan-plus package/trojan-plus
 svn co https://github.com/xiaorouji/openwrt-package/trunk/package/naiveproxy package/naiveproxy
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/v2ray package/v2ray
+svn co https://github.com/xiaorouji/openwrt-package/trunk/package/v2ray-plugin package/v2ray-plugin
