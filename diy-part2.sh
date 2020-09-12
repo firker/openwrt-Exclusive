@@ -18,8 +18,8 @@ curl -fsSL  https://raw.githubusercontent.com/Lienol/openwrt-packages/dev-19.07/
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/smartdns
-rm -rf ./package/lean/v2ray
-rm -rf ./package/lean/v2ray-plugin
+# rm -rf ./package/lean/v2ray
+# rm -rf ./package/lean/v2ray-plugin
 # cp -r feeds/lienol/lienol/luci-app-passwall feeds/diy
 # cp -r feeds/lienol/package/{chinadns-ng,trojan-go,syncthing,tcping} feeds/diy/vssr
 # rm -rf ./feeds/{lienol,lienol.tmp}
