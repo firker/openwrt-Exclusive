@@ -8,7 +8,7 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt](https://github.com/project-openwrt/openwrt)
 
-感谢所有openwrt固件源码作者以及所有插件源码作者。
+由衷感谢所有为openwrt无私奉献的大佬们。
 
 ## 固件说明：
 
