@@ -8,6 +8,10 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt](https://github.com/project-openwrt/openwrt)
 
+感谢所有openwrt固件源码作者以及所有插件源码作者。
+
+## 固件说明：
+
 lean源码版本，内核为***5.4***（ipv6）版和***4.19***版
 
 project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](https://www.kernel.org/))
@@ -16,18 +20,18 @@ project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](htt
 
 > `ip：192.168.1.1 密码：password`
 
-稳定版云编译项目：[https://github.com/firkerword/openwrt-stable-version](https://github.com/firkerword/openwrt-stable-version)
-
-感谢所有openwrt固件源码作者以及所有插件源码作者。
+## 固件下载
+### 点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)  选择需要的版本
+![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/c.png)
 
 ## 固件截图：
 ### 4.19版
-![avatar](boc/d.png)
+![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/d.png)
 ### 5.4版（支持IPV6）
-![avatar](boc/b.png)
+![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/b.png)
 ### project 4.19版
-![avatar](boc/e.png)
-## 下载方式：点击[Actions](https://github.com/firker/openwrt-Exclusive/actions)  选择需要的版本
-![avatar](boc/c.png)
-## 联系[Tg频道订阅](https://t.me/zhinengchaoshenzhe)
+![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/e.png)
+## 其他
+联系：[Tg频道订阅](https://t.me/zhinengchaoshenzhe)
 
+稳定版云编译项目：[https://github.com/firkerword/openwrt-stable-version](https://github.com/firkerword/openwrt-stable-version)
