@@ -122,8 +122,9 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
+        rm -rf packages && mkdir packages
+        find -name "*esxi-flat.vmdk*" | xargs -i mv -f {} packages
         rm -rf packages
-        find . -name “esxi” -exec rm -rf {} \;
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
     - name: 上传固件到github
