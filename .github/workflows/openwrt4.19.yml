@@ -16,7 +16,7 @@ on:
 #    branches:
 #      - main
 #    paths:
-#      - '4.config'
+#      - '4.19.config'
   schedule:
     - cron: 0 18 */3 * *
   watch:
@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 4.config
+  CONFIG_FILE: 4.19.config
   DIY_P1_SH: diy4.19.sh
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: false
