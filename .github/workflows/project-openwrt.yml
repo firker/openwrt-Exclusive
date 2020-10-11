@@ -15,10 +15,10 @@ on:
 #  push:
 #    branches:
 #      - main
-    paths:
-      - 'project.config'
+  paths:
+   - 'project.config'
   schedule:
-    - cron: 0 18 */3 * *
+   - cron: 0 18 */3 * *
 #  watch:
 #    types: started
 
