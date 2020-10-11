@@ -152,22 +152,6 @@ jobs:
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
   
-    - name: Create label
-      id: tag
-      if: env.DEBUG_MODEL == 'false' && env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "::set-env name=RELEASE_TAG::$(date +"%Y.%m.%d-%H")"
-        echo "💽 Auto build" >> release.txt
-        echo "🔍 [Cowtransfer](${{ env.COWTRANSFER_URL }})" >> release.txt
-        echo "🔍 [WeTransfer](${{ env.WETRANSFER_URL }})" >> release.txt
-        echo "::set-output name=status::success"
-    
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      if: env.DEBUG_MODEL == 'false' && steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-      with:
-        tag_name: ${{ env.RELEASE_TAG }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+    - name: 微信报告
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      run: curl https://sc.ftqq.com/${{ secrets.SERVERCHAN }}.send?text=${{ env.FILE_NAME }}openwrt5.4发布成功-编译结束
