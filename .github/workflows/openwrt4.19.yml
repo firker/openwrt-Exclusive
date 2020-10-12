@@ -8,7 +8,7 @@
 
 name: OpenWrt-lede4.19
 
- on:
+on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
