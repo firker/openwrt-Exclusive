@@ -10,13 +10,6 @@ name: OpenWrt-lede4.19
 
 on:
   repository_dispatch:
-#  release:
-#    types: published
-#  push:
-#    branches:
-#      - main
-#    paths:
-#      - '4.19.config'
   workflow_dispatch:
     inputs:
       ssh:
@@ -25,8 +18,6 @@ on:
         default: 'false'
   schedule:
     - cron: 0 18 */3 * *
-#  watch:
-#    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -154,7 +145,8 @@ jobs:
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
-    - name: Generate release tag
+        
+    - name: 创建release标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
@@ -163,15 +155,29 @@ jobs:
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
-    - name: Upload firmware to release
+    - name: 发布至release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
+    - name: 删除旧的Artifacts
+      uses: c-hive/gha-remove-artifacts@v1.2.0
+      with:
+        age: '1 day'
+        skip-recent: 3
+
+    - name: 删除旧的Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 3
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     - name: 微信报告
       if: steps.organize.outputs.status == 'success' && !cancelled()
