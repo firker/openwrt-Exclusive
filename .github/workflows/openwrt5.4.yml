@@ -10,17 +10,14 @@ name: OpenWrt-lede5.4
 
 on:
   repository_dispatch:
-  release:
-    types: published
-#  push:
-#    branches:
-#      - main
-#    paths:
-#      - '5.4.config'
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
   schedule:
     - cron: 0 21 */3 * * 
-  watch:
-    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -40,13 +37,12 @@ env:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: 准备工作
+    - name: 检查项目分支
       uses: actions/checkout@main
 
-    - name: 搭建编译环境
+    - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -62,32 +58,35 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-    - name: 读取feeds配置
+    - name: 加载自定义设置
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: 下载feeds插件
+    - name: 下载插件
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: 安装feeds插件
+    - name: 读取插件
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: 自定义固件设置
+    - name: 更改设置
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-    - name: SSH云窗口
-      uses: P3TERX/debugger-action@main
-      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-    - name: 下载package文档
+    - name: 下载安装包
       id: package
       run: |
         cd openwrt
@@ -105,18 +104,18 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-    - name: 检查空间使用情况
+    - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
 
-    - name: 上传bin目录插件
+    - name: 上传bin压缩目录
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
+        path: openwrt/bin/packages/x86_64
 
-    - name: 整理文件
+    - name: 整理编译好的固件
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
@@ -124,15 +123,14 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
-
-    - name: 上传编译好的固件
+    - name: 上传固件到github
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_5.4${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: 上传固件至COWTRANSFER
+    - name: 上传固件到NN网盘
       id: cowtransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
@@ -140,8 +138,7 @@ jobs:
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
-
-    - name: 上传固件至WeTransfer
+    - name: 上传固件到WT网盘
       id: wetransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
@@ -182,20 +179,20 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-  
+
     - name: 微信报告
       uses: emon100/Action-Serverchan@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
-        with:
+      with:
         SCKEY: ${{ secrets.SERVERCHAN }}
         text: 恭喜主人openwrt5.4固件编译成功！
         desp: 我亲爱的主人您要编译的固件成功完成了！
-
-
+              
+              
               奶牛快传：${{ steps.cowtransfer.outputs.url }}
-
-
+              
+              
               WeTransfer：${{ steps.wetransfer.outputs.url }}
-
-
+              
+              
               祝小主人见人爱，花见花开，车见车载，天天好心情🎈！！！
