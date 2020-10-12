@@ -26,6 +26,7 @@ env:
   CONFIG_FILE: project.config
   DIY_P1_SH: project.sh
   DIY_P2_SH: project2.sh
+
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
@@ -103,6 +104,8 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "FILE_TIME=_$(date "+%Y年%m月%d号-%H点%M分")" >> $GITHUB_ENV
+
     - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
@@ -121,6 +124,11 @@ jobs:
         cd openwrt/bin/targets/*/*
         rm -rf packages && mkdir packages
         find -name "*esxi-flat.vmdk*" | xargs -i mv -f {} packages
+        find -name "*kernel.bin*" | xargs -i mv -f {} packages
+        find -name "*rootfs*" | xargs -i mv -f {} packages
+        find -name "*.manifest*" | xargs -i mv -f {} packages
+        find -name "*vmlinuz*" | xargs -i mv -f {} packages
+        find -name "*esxi.vmdk*" | xargs -i mv -f {} packages
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
@@ -148,24 +156,42 @@ jobs:
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
         
-    - name: 创建release标签
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
-        touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "::set-output name=status::success"
-    - name: 发布至release
+    - name: 自动发布固件
+
       uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
+
+      if: steps.organizer.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
+
       env:
+
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+
+        name: ${{ env.FILE_TIME }} 【 project4.19-X86-64 】固件
+
+        tag_name: ${{ env.FILE_DATE }}
+
+        body: |            
+
+            源码 : https://github.com/project-openwrt/openwrt
+
+            由衷感谢所有为openwrt无私奉献的大佬们。
+
+            
+
+            🔰 固件下载 
+
+            
+
+            🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})
+
+            
+
+            🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})
+
+        files: ${{ env.FIRMWARE }}/*     
+  
     - name: 删除旧的Artifacts
       uses: c-hive/gha-remove-artifacts@v1.2.0
       with:
