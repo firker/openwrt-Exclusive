@@ -10,18 +10,14 @@ name: OpenWrt-project4.19
 
 on:
   repository_dispatch:
-  release:
-    types: published
-#  push:
-#    branches:
-#      - main
-#    paths:
-#      - 'project.config'
-  schedule:   
-    - cron: 0 18 */3 * * 
-  watch:
-    types: started
-
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+  schedule:
+    - cron: 0 18 */3 * *
 
 env:
   REPO_URL: https://github.com/project-openwrt/openwrt
@@ -82,7 +78,13 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        
+    - name: SSH链接管理
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
     - name: 下载安装包
       id: package
       run: |
@@ -110,7 +112,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
+        path: openwrt/bin/packages/x86_64
 
     - name: 整理编译好的固件
       id: organize
@@ -178,20 +180,3 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-
-    - name: 微信报告
-      uses: emon100/Action-Serverchan@master
-      if: steps.organize.outputs.status == 'success' && !cancelled()
-        with:
-        SCKEY: ${{ secrets.SERVERCHAN }}
-        text: 恭喜主人project4.19固件编译成功！
-        desp: 我亲爱的主人您要编译的固件成功完成了！
-
-
-              奶牛快传：${{ steps.cowtransfer.outputs.url }}
-
-
-              WeTransfer：${{ steps.wetransfer.outputs.url }}
-
-
-              祝小主人见人爱，花见花开，车见车载，天天好心情🎈！！！
