@@ -8,9 +8,9 @@
 
 name: OpenWrt-lede4.19
 
-# on:
-#  repository_dispatch:
-#  workflow_dispatch:
+ on:
+  repository_dispatch:
+  workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
