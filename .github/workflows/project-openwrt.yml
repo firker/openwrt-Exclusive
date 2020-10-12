@@ -10,17 +10,14 @@ name: OpenWrt-project4.19
 
 on:
   repository_dispatch:
-  release:
-    types: published
-  push:
-    branches:
-      - main
-    paths:
-      - 'project.config'
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
   schedule:
    - cron: 0 18 */3 * *
-#  watch:
-#    types: started
 
 env:
   REPO_URL: https://github.com/project-openwrt/openwrt
@@ -41,7 +38,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
     - name: 检查项目分支
@@ -63,7 +59,7 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
-        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
     - name: 加载自定义设置
       run: |
@@ -85,8 +81,11 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     - name: SSH链接管理
-      uses: P3TERX/debugger-action@main
-      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: 下载安装包
       id: package
@@ -135,24 +134,68 @@ jobs:
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到NN网盘
+      id: cowtransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
     - name: 上传固件到WT网盘
+      id: wetransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
       run: |
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-    - name: 上传固件到文叔叔
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_WENSHUSHU == 'true' && !cancelled()
+        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
+        
+    - name: 创建release标签
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        curl -fsSL git.io/file-transfer | sh
-        ./transfer wss -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wenshushu.log
-        echo "::warning file=wenshushu.cn::$(cat wenshushu.log | grep https)"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
+        touch release.txt
+        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "::set-output name=status::success"
+    - name: 发布至release
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
+    - name: 删除旧的Artifacts
+      uses: c-hive/gha-remove-artifacts@v1.2.0
+      with:
+        age: '1 day'
+        skip-recent: 3
+
+    - name: 删除旧的Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 3
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     - name: 微信报告
+      uses: emon100/Action-Serverchan@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
-      run: curl https://sc.ftqq.com/${{ secrets.SERVERCHAN }}.send?text=${{ env.FILE_NAME }}project4.19发布成功-编译结束
+        with:
+        SCKEY: ${{ secrets.SERVERCHAN }}
+        text: 恭喜主人project4.19固件编译成功！
+        desp: 我亲爱的主人您要编译的固件成功完成了！
+
+
+              奶牛快传：${{ steps.cowtransfer.outputs.url }}
+
+
+              WeTransfer：${{ steps.wetransfer.outputs.url }}
+
+
+              祝小主人见人爱，花见花开，车见车载，天天好心情🎈！！！
