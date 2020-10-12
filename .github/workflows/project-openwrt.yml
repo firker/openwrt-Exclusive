@@ -26,7 +26,6 @@ env:
   CONFIG_FILE: project.config
   DIY_P1_SH: project.sh
   DIY_P2_SH: project2.sh
-  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
