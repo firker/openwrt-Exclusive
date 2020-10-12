@@ -10,14 +10,17 @@ name: OpenWrt-lede5.4
 
 on:
   repository_dispatch:
-  workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
+  release:
+    types: published
+#  push:
+#    branches:
+#      - main
+#    paths:
+#      - '5.4.config'
   schedule:
     - cron: 0 21 */3 * * 
+  watch:
+    types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
