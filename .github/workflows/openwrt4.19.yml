@@ -159,13 +159,13 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +%Y年%m月%d号-%H点%M分")-lede4.19-X86-64"
+        echo "::set-output name=release_tag::$(date +%Y-%m%d")-lede4.19-X86-64"
         touch release.txt
-        echo "源码 : https://github.com/project-openwrt/openwrt" >> release.txt
+        echo "[固件源码](https://github.com/project-openwrt/openwrt)" >> release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "📥 固件下载" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 https://cowtransfer.com/s/9d709ffea7264b(${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
     - name: 发布至release
       uses: softprops/action-gh-release@v1
