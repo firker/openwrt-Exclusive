@@ -1,0 +1,30 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd94:4a52:70d5::/48'
+	option packet_steering '1'
+
+config interface 'lan'
+	option type 'bridge'
+	option proto 'static'
+	option ipaddr '192.168.1.1'
+	option netmask '255.255.255.0'
+	option delegate '0'
+	option _orig_ifname 'eth0'
+	option _orig_bridge 'true'
+	option ifname 'eth0 eth2'
+
+config interface 'wan'
+	option ifname 'eth1'
+	option _orig_ifname 'eth1'
+	option _orig_bridge 'false'
+	option proto 'pppoe'
+	option delegate '0'
+	option ipv6 '0'
+	option keepalive '0'
+
