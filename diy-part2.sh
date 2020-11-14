@@ -20,7 +20,7 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-SE'/g" ./package/base-files/files
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 rm -rf ./package/lean/luci-theme-argon
-rm -rf ./package/lean/dnsforwarder
+# rm -rf ./package/lean/dnsforwarder
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/packages/net/https-dns-proxy
 # rm -rf ./package/lean/v2ray
@@ -31,4 +31,4 @@ rm -rf ./feeds/packages/net/https-dns-proxy
 # rm -rf ./feeds/diy/luci-app-passwall
 # rm -rf ./feeds/diy/vssr/{chinadns-ng,trojan-go,syncthing,tcping}
 svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
-svn co https://github.com/project-openwrt/openwrt/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
+# svn co https://github.com/project-openwrt/openwrt/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
