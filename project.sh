@@ -23,4 +23,3 @@ curl -fsSL  https://raw.githubusercontent.com/siropboy/other/master/patch/powero
 git clone https://github.com/firker/diy-ziyong package/diy-ziyong
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-svn co https://github.com/xiaorouji/openwrt-package/trunk/package/naiveproxy package/naiveproxy
