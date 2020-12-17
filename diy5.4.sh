@@ -26,4 +26,4 @@ git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme
 git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
-svn co https://github.com/firker/diy-ziyong/trunk/smartdns package/smartdns
+git clone https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
