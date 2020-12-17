@@ -23,12 +23,9 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-SE'/g" ./package/base-files/files
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/smartdns
 rm -rf ./feeds/packages/net/https-dns-proxy
+rm -rf ./feeds/diy/luci-app-vssr-plus
+rm -rf ./feeds/diy/vssr
 # rm -rf ./package/lean/v2ray
 # rm -rf ./package/lean/v2ray-plugin
-# cp -r feeds/lienol/lienol/luci-app-passwall feeds/diy
-# cp -r feeds/lienol/package/{chinadns-ng,trojan-go,syncthing,tcping} feeds/diy/vssr
-# rm -rf ./feeds/{lienol,lienol.tmp}
-# rm -rf ./feeds/diy/luci-app-passwall
-# rm -rf ./feeds/diy/vssr/{chinadns-ng,trojan-go,syncthing,tcping}
 svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
 # svn co https://github.com/project-openwrt/openwrt/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
