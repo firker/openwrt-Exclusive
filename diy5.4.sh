@@ -27,5 +27,5 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-ap
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
 git clone https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
-git clone https://github.com/lede/luci-app-ledeproxy.git package/luci-app-ledeproxy
+git clone https://github.com/ledewrt/luci-app-ledeproxy.git package/luci-app-ledeproxy
 git clone https://github.com/jerrykuku/luci-app-ttnode.git package/luci-app-ttnode
