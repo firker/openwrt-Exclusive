@@ -29,3 +29,4 @@ git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-a
 git clone https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
 git clone https://github.com/ledewrt/luci-app-ledeproxy.git package/luci-app-ledeproxy
 git clone https://github.com/jerrykuku/luci-app-ttnode.git package/luci-app-ttnode
+svn co https://github.com/firker/diy-ziyong/trunk/smartdns package/smartdns
