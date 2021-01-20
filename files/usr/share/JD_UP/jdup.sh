@@ -7,3 +7,4 @@ git clone https://github.com/firkerword/JD_Script.git /usr/share/JD_Script
 
 chmod 777 /usr/share/JD_Script/jd.sh && sh /usr/share/JD_Script/jd.sh
 
+sh $jd update
