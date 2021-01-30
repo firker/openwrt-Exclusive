@@ -191,7 +191,7 @@ jobs:
       uses: emon100/Action-Serverchan@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        SCKEY: ${{ secrets.SERVERCHAN }}
+        SCKEY: ${{ SCU121630T92fad8c3dba445146cfe4b797acc7201600ce9d1844dc }}
         text: 恭喜主人openwrt5.4固件编译成功！
         desp: 我亲爱的主人您要编译的固件成功完成了！
               
