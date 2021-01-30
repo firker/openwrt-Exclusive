@@ -171,7 +171,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{863d4069cde421d761c5c98833e31bcd5e0bcbd9}}
+        GITHUB_TOKEN: 863d4069cde421d761c5c98833e31bcd5e0bcbd9
       with:
         name: ${{ env.FILE_TIME }} 「 openwrt5.4-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
@@ -185,7 +185,7 @@ jobs:
         keep_latest: 9
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{863d4069cde421d761c5c98833e31bcd5e0bcbd9}}
+        GITHUB_TOKEN: 863d4069cde421d761c5c98833e31bcd5e0bcbd9
 
     - name: 微信报告
       uses: emon100/Action-Serverchan@master
