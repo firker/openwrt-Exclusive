@@ -21,18 +21,18 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-SE'/g" ./package/base-files/files
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # rm -rf ./package/lean/dnsforwarder
 rm -rf ./package/lean/luci-theme-argon
-rm -rf ./package/lean/shadowsocksr-libev
-rm -rf ./feeds/packages/net/smartdns
-rm -rf ./feeds/passwall/luci-app-passwall
-rm -rf ./feeds/helloworld/luci-app-ssr-plus
+# rm -rf ./package/lean/shadowsocksr-libev
+# rm -rf ./feeds/packages/net/smartdns
+# rm -rf ./feeds/passwall/luci-app-passwall
+# rm -rf ./feeds/helloworld/luci-app-ssr-plus
 rm -rf ./feeds/packages/net/https-dns-proxy
 rm -rf ./feeds/diy/luci-app-vssr-plus
 rm -rf ./feeds/diy/vssr
 # rm -rf ./package/lean/v2ray
 # rm -rf ./package/lean/v2ray-plugin
-svn co https://github.com/garypang13/openwrt-packages/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
-svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-passwall feeds/passwall/luci-app-passwall
-svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-ssr-plus feeds/helloworld/luci-app-ssr-plus
-svn co https://github.com/garypang13/openwrt-packages/trunk/smartdns feeds/packages/net/smartdns
+# svn co https://github.com/garypang13/openwrt-packages/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
+# svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-passwall feeds/passwall/luci-app-passwall
+# svn co https://github.com/garypang13/openwrt-packages/trunk/luci-app-ssr-plus feeds/helloworld/luci-app-ssr-plus
+# svn co https://github.com/garypang13/openwrt-packages/trunk/smartdns feeds/packages/net/smartdns
 svn co https://github.com/Lienol/openwrt-packages/trunk/net/https-dns-proxy feeds/packages/net/https-dns-proxy
 # svn co https://github.com/project-openwrt/openwrt/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
