@@ -31,5 +31,5 @@ git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-a
 git clone https://github.com/jerrykuku/luci-app-vssr.git  package/luci-app-vssr
 git clone https://github.com/godros/luci-app-godproxy.git package/luci-app-igodproxy
 git clone https://github.com/garypang13/luci-app-bypass.git package/luci-app-bypass
-git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
+# git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/luci-app-UUGameAcc
