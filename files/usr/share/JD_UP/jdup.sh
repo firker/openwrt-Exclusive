@@ -1,7 +1,7 @@
 # ------------------- 京东签到一键脚本！ ------------------- 
 
 
-npm install -g crypto-js got http-server tough-cookie download request tunnel
+npm install -g crypto-js got http-server tough-cookie download request tunnel qrcode-terminal
 
 git clone -b main https://github.com/firkerword/JD_Script.git /usr/share/JD_Script
 
