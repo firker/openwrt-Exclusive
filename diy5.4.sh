@@ -32,3 +32,4 @@ git clone https://github.com/garypang13/luci-app-bypass.git package/luci-app-byp
 git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/luci-app-UUGameAcc
 git clone https://github.com/ITdesk01/jd_openwrt_script.git package/jd_openwrt_script
+svn co https://github.com/garypang13/openwrt-packages/trunk/smartdns-le package/smartdns-le
