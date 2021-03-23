@@ -28,8 +28,6 @@ rm -rf ./package/lean/luci-theme-argon
 # rm -rf ./feeds/passwall/luci-app-passwall
 # rm -rf ./feeds/helloworld/luci-app-ssr-plus
 rm -rf ./feeds/packages/net/https-dns-proxy
-rm -rf ./feeds/diy/luci-app-vssr-plus
-rm -rf ./feeds/diy/vssr
 # rm -rf ./package/lean/v2ray
 # rm -rf ./package/lean/v2ray-plugin
 # svn co https://github.com/garypang13/openwrt-packages/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
