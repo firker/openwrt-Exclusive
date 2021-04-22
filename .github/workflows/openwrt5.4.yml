@@ -14,8 +14,8 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        required: true
-        default: 'false'
+        required: false
+        default: 'ssh-actions'
   schedule:
     - cron: 0 21 */3 * * 
 
@@ -79,9 +79,10 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        
     - name: SSH链接管理
       uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      if: env.SSH_ACTIONS == 'true' || (github.event.inputs.ssh == 'ssh' && github.event.inputs.ssh  != 'false')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
