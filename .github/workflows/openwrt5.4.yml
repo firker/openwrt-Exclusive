@@ -14,8 +14,8 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        required: false
-        default: 'true'
+        required: true
+        default: 'false'
   schedule:
     - cron: 0 21 */3 * * 
 
