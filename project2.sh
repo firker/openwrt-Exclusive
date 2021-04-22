@@ -8,8 +8,8 @@
 # Blog: https://p3terx.com
 #============================================================
 
-# Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.252/g' package/base-files/files/bin/config_generate
+Modify default IP
+sed -i 's/192.168.1.1/192.168.50.252/g' package/base-files/files/bin/config_generate
 rm -rf ./package/ctcgfw/luci-app-adguardhome
 rm -rf ./package/ctcgfw/luci-theme-argon-mod
 rm -rf ./package/ctcgfw/luci-app-unblockneteasemusic
