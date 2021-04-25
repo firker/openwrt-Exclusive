@@ -178,23 +178,22 @@ jobs:
         
     - name: 发布至release
       uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      if: steps.organizer.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
       with:
-        name: ${{ env.FILE_TIME }} 「 openwrt5.4-X86-64 」
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
+        name: ${{ env.NAME2 }}-${{ env.NAME1 }}
+        tag: ${{ env.date2 }}
+        token: ${{ secrets.REPO_TOKEN }}
+        bodyFile: "update_log.txt"
+        artifacts: "${{ env.FIRMWARE }}/*"
 
     - name: 删除旧的Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        keep_latest: 9
+        keep_latest: 3
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 微信报告
       uses: emon100/Action-Serverchan@master
