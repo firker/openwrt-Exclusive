@@ -178,13 +178,13 @@ jobs:
         
     - name: 发布至release
       uses: softprops/action-gh-release@v1
-      if: steps.organizer.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: ${{ env.NAME2 }}-${{ env.NAME1 }}
-        tag: ${{ env.date2 }}
-        token: ${{ secrets.REPO_TOKEN }}
-        bodyFile: "update_log.txt"
-        artifacts: "${{ env.FIRMWARE }}/*"
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: ${{ env.FIRMWARE }}/*
 
     - name: 删除旧的Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
