@@ -28,4 +28,4 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 # git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 # git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/luci-app-UUGameAcc
-# git clone https://github.com/ITdesk01/jd_openwrt_script.git package/jd_openwrt_script
+git clone https://github.com/yichya/luci-app-xray.git package/luci-app-xray
