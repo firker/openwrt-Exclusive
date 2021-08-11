@@ -25,7 +25,7 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-SE'/g" ./package/base-files/files
 rm -rf ./package/lean/luci-theme-argon
 # rm -rf ./package/lean/shadowsocksr-libev
 # rm -rf ./feeds/packages/net/smartdns
-# rm -rf ./feeds/passwall/luci-app-passwall
+rm -rf ./feeds/passwall/xray-plugin
 # rm -rf ./feeds/helloworld/luci-app-ssr-plus
 rm -rf ./feeds/packages/net/https-dns-proxy
 # rm -rf ./package/lean/v2ray
