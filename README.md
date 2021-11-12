@@ -12,7 +12,7 @@ project-openwrt固件源码地址：[https://github.com/project-openwrt/openwrt]
 
 ## 固件说明：
 
-lean源码版本，内核为***5.4***（ipv6）版和***4.19***版
+lean源码版本，内核为***5.4***（ipv6）版和***5.10***版
 
 project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](https://www.kernel.org/))
 
@@ -25,9 +25,9 @@ project-openwrt源码版本，内核为***4.19***版(同步[linux4.19内核](htt
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/c.png)
 
 ## 固件截图：
-### 4.19版
+### 5.4版
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/d.png)
-### 5.4版（支持IPV6）
+### 5.10版（支持IPV6）
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/b.png)
 ### project 4.19版
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/e.png)
