@@ -9,7 +9,10 @@
 #=============================================================
 
 sed -i 's/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Makefile
-
+sed -i 's/192.168.1.1/10.10.10.3/g' openwrt/package/base-files/files/bin/config_generate
+sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings
+sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' openwrt/feeds/luci/collections/luci/Makefile
+sed -i '/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-eay'' openwrt/package/lean/default-settings/files/zzz-default-settings
 # Uncomment a feed source
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
