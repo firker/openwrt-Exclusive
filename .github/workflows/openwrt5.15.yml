@@ -186,3 +186,20 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+
+    - name: 微信报告
+      uses: emon100/Action-Serverchan@v2
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      with:
+        SCKEY: ${{ secrets.SERVERCHAN }}
+        text: 恭喜主人openwrt5.15固件编译成功！
+        desp: 我亲爱的主人您要编译的固件成功完成了！
+              
+              
+              奶牛快传：${{ steps.cowtransfer.outputs.url }}
+              
+              
+              WeTransfer：${{ steps.wetransfer.outputs.url }}
+              
+              
+              Have a nice day.
