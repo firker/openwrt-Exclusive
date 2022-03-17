@@ -21,11 +21,9 @@ sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-SE'/g" ./package/base-files/files
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 # sed -i '60s/ITdesk01/firkerword/' ./package/jd_openwrt_script/files/jd_openwrt_script
-# rm -rf ./package/lean/dnsforwarder
 rm -rf ./package/lean/luci-theme-argon
 rm -rf ./feeds/packages/net/adguardhome
-# rm -rf ./package/lean/shadowsocksr-libev
-# rm -rf ./feeds/packages/net/smartdns
+rm -rf ./feeds/packages/net/smartdns
 rm -rf ./package/lean/luci-app-qbittorrent
 curl -fsSL  https://raw.githubusercontent.com/coolsnowwolf/packages/master/net/adguardhome/Makefile > ./feeds/diy/adguardhome/Makefile
 # svn co https://github.com/garypang13/openwrt-packages/trunk/shadowsocksr-libev package/lean/shadowsocksr-libev
