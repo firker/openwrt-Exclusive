@@ -22,6 +22,7 @@ sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=5.10/g' ./target/linux/x86/Make
 #　git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 git clone https://github.com/jerrykuku/openwrt-package.git package/vssr
 git clone https://github.com/fw876/helloworld.git package/ssr
 git clone https://github.com/firker/diy-ziyong.git package/diy-ziyong
