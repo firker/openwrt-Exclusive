@@ -22,6 +22,10 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 #　git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+svn co https://github.com/linkease/istore/trunk/luci/luci-app-store package/luci-app-store
+sed -i 's/luci-lib-ipkg/luci-base/g' package/luci-app-store/Makefile
+svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
@@ -36,3 +40,4 @@ git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 # git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 # git clone https://github.com/BCYDTZ/luci-app-UUGameAcc.git package/luci-app-UUGameAcc
 # git clone https://github.com/yichya/luci-app-xray.git package/luci-app-xray
+
