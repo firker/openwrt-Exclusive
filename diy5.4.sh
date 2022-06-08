@@ -24,7 +24,7 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliy
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
-git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
+# git clone https://github.com/kiddin9/openwrt-bypass.git package/openwrt-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
 git clone https://github.com/firker/diy-ziyong.git package/diy-ziyong
 git clone https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
