@@ -160,7 +160,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
-        echo "功能介绍：含阿里云盘、Dockerman、定时重拨、Openclash、Bypass、VSSR、全能推送、Openvpn、nps穿透、UU加速等插件。" >> release.txt
+        echo "功能介绍：含阿里云盘、Dockerman、定时重拨、Openclash、Bypass、Passwall、VSSR、全能推送、Openvpn、nps穿透、UU加速等插件。" >> release.txt
         echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "📥 固件下载" >> release.txt
