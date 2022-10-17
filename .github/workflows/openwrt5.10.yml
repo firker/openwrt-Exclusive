@@ -177,6 +177,12 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
+        
+    - name: 清理旧的workflow
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 180
+        keep_minimum_runs: 10
 
     - name: 删除旧的Releases
       uses: dev-drprasad/delete-older-releases@v0.1.0
