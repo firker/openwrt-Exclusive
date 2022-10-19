@@ -10,7 +10,7 @@ lean固件源码地址：[https://github.com/coolsnowwolf/lede](https://github.c
 
 ## 固件说明：
 
-lean源码版本，内核为***5.4***版、***5.10***版、***5.15***版
+lean源码版本，内核为***5.4***版、***5.10***版、***5.15***、***6.0***版
 
 支持IPV6
 
@@ -28,7 +28,7 @@ lean源码版本，内核为***5.4***版、***5.10***版、***5.15***版
 ## 固件截图：
 ### 5.4版（支持IPV6）
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/d.png)
-### 5.10版（支持IPV6）
+### 6.0版（支持IPV6）
 ![avatar](https://raw.githubusercontent.com/firker/openwrt-Exclusive/main/boc/b.png)
 ## 其他
 联系：[Tg频道订阅](https://t.me/zhinengchaoshenzhe)
