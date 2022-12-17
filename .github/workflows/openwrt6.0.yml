@@ -173,7 +173,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 openwrt6.0-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 openwrt6.1-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
@@ -198,7 +198,7 @@ jobs:
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         SCKEY: ${{ secrets.SERVERCHAN }}
-        text: 恭喜主人openwrt5.10最新版固件编译成功！
+        text: 恭喜主人openwrt6.1最新版固件编译成功！
         desp: 我亲爱的主人您要编译的固件成功完成了！
               
               
