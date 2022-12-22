@@ -25,7 +25,6 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
 git clone https://github.com/sbwml/openwrt-alist.git package/openwrt-alist
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobirdsvn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/luci-app-bypass
-sed -i 's/luci-lib-ipkg/luci-base/g' package/luci-app-bypass/Makefile
 git clone https://github.com/fw876/helloworld.git package/ssr
 git clone https://github.com/firker/diy-ziyong.git package/diy-ziyong
 git clone https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
