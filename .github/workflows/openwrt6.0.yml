@@ -166,7 +166,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
+        echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
         echo "功能介绍：Dockerman、定时重拨、Openclash、Bypass、Passwall、VSSR、Openvpn、nps穿透、UU加速等插件。" >> release.txt
         echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
