@@ -24,7 +24,8 @@ svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliy
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
 git clone https://github.com/sbwml/openwrt-alist.git package/openwrt-alist
-git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobirdsvn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/luci-app-bypass
+git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
+svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/luci-app-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
 git clone https://github.com/firker/diy-ziyong.git package/diy-ziyong
 git clone https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
@@ -35,6 +36,8 @@ git clone https://github.com/firkerword/luci-theme-opentopd.git package/luci-the
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
+git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+git clone https://github.com/immortalwrt/homeproxy.git package/luci-app-homeproxy
 git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 # git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 # git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
