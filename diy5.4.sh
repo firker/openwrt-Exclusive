@@ -43,5 +43,3 @@ git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
 # git clone https://github.com/project-lede/luci-app-godproxy.git package/luci-app-godproxy
 # git clone https://github.com/garypang13/luci-app-dnsfilter.git package/luci-app-dnsfilter
 # git clone https://github.com/ITdesk01/jd_openwrt_script.git package/jd_openwrt_script
- find ./ | grep Makefile | grep xray-plugin | xargs rm -f
-svn co https://github.com/sbwml/openwrt_helloworld/trunk/xray-plugin package/xray-plugin
