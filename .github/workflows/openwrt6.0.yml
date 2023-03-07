@@ -54,6 +54,17 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        
+    - name: 查看磁盘
+      run: df -hT
+      
+    - name: 清理空间
+      run: |
+        sudo swapoff -a
+        sudo rm -f /swapfile
+        sudo apt clean
+        docker rmi $(docker image ls -aq)
+        
     - name: 下载固件源码
       working-directory: /workdir
       run: |
