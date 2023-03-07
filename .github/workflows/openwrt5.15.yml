@@ -55,7 +55,7 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
-    - name: 查看磁盘使用情况
+    - name: 查看磁盘
       run: df -hT
       
     - name: 清理空间
@@ -64,7 +64,6 @@ jobs:
         sudo rm -f /swapfile
         sudo apt clean
         docker rmi $(docker image ls -aq)
-        df -h
         
     - name: 下载固件源码
       working-directory: /workdir
