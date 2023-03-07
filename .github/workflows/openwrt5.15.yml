@@ -55,6 +55,9 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
+    - name: 查看磁盘使用情况
+      run: df -hT
+      
     - name: 清理空间
       run: |
         sudo swapoff -a
