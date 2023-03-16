@@ -30,8 +30,8 @@ env:
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
-  UPLOAD_RELEASE: true
+  UPLOAD_WETRANSFER: false
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -164,6 +164,7 @@ jobs:
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
+
     - name: 上传固件到WT网盘
       id: wetransfer
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_WETRANSFER == 'true' && !cancelled()
@@ -203,14 +204,14 @@ jobs:
         retain_days: 180
         keep_minimum_runs: 10
 
-    - name: 删除旧的Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 9
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+#     - name: 删除旧的Releases
+#       uses: dev-drprasad/delete-older-releases@v0.1.0
+#       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+#       with:
+#         keep_latest: 9
+#         delete_tags: true
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
-    - name: TG推送
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅱️恭喜主人X86-openwrt5.15-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
+#     - name: TG推送
+#       run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅱️恭喜主人X86-openwrt5.15-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
