@@ -145,12 +145,12 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-#     - name: 上传固件到github
-#       uses: actions/upload-artifact@main
-#       if: steps.organize.outputs.status == 'success' && !cancelled()
-#       with:
-#         name: OpenWrt-5.19${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-#         path: ${{ env.FIRMWARE }}
+    - name: 上传固件到github
+      uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      with:
+        name: OpenWrt-5.19${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
 
     - name: 清理旧的workflow
       uses: FunctionXJB/delete-workflow-runs@main
