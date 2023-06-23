@@ -24,7 +24,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 # svn co https://github.com/linkease/istore/trunk/luci/luci-app-store package/luci-app-store
 # svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
 # git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
-git clone https://github.com/sbwml/openwrt-alist.git package/openwrt-alist
+# git clone https://github.com/sbwml/openwrt-alist.git package/openwrt-alist
 git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-bypass package/luci-app-bypass
 git clone https://github.com/fw876/helloworld.git package/ssr
