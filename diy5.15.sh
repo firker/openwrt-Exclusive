@@ -34,7 +34,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon-18.06
 git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+git clone -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush.git package/luci-app-wechatpush
 git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
