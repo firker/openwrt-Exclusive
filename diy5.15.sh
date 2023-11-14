@@ -20,7 +20,7 @@ sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' ./target/linux/x86/Makef
 # mv -vf ../mt7621_phicomm_k2p.dts ./target/linux/ramips/dts/mt7621_phicomm_k2p.dts
 #　git clone https://github.com/vernesong/OpenClash.git package/OpenClash
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
+# svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # svn co https://github.com/linkease/istore/trunk/luci/luci-app-store package/luci-app-store
 # svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
 # git clone https://github.com/QiuSimons/openwrt-mos.git package/openwrt-mos
