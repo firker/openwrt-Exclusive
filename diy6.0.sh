@@ -8,6 +8,14 @@
 # Blog: https://p3terx.com
 #=============================================================
 
+# 修改默认IP
+# sed -i 's/192.168.1.1/10.0.0.1/g' package/base-files/files/bin/config_generate
+ sed -i '$i uci set network.lan.ifname="eth1"' package/lean/default-settings/files/zzz-default-settings
+ sed -i '$i uci set network.wan.ifname="eth0"' package/lean/default-settings/files/zzz-default-settings
+ sed -i '$i uci set network.wan.proto=pppoe' package/lean/default-settings/files/zzz-default-settings
+ sed -i '$i uci set network.wan6.ifname="eth0"' package/lean/default-settings/files/zzz-default-settings
+ sed -i '$i uci commit network' package/lean/default-settings/files/zzz-default-settings
+
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' ./target/linux/x86/Makefile
 # sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=6.2/g' ./target/linux/x86/Makefile
 
