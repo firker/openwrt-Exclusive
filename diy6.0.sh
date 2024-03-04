@@ -55,7 +55,7 @@ git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luc
 git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 git clone https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
 # git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
+# git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
 find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
 find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
