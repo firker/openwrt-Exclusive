@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-lede6.0
+name: OpenWrt-lede6.6
 
 on:
   repository_dispatch:
@@ -166,7 +166,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_6.0${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OpenWrt_6.6${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到NN网盘
@@ -192,7 +192,7 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "功能介绍：Dockerman、定时重拨、Openclash、Bypass、Passwall2、VSSR、Openvpn、nps穿透、UU加速等插件。" >> release.txt
+        echo "功能介绍：Dockerman、定时重拨、Passwall、Openvpn、mosdns等。" >> release.txt
         echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "📥 固件下载" >> release.txt
@@ -205,7 +205,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} 「 openwrt6.1-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 openwrt6.6-X86-64 」
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
