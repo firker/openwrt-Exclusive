@@ -39,25 +39,54 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - name: Before freeing up disk space
+      run: |
+        echo "Before freeing up disk space"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
+
+    - name: "Optimize Disk Space"
+      uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.0"
+      with:
+        operate_sudo: "True"
+        general_include: ".+"
+        general_exclude: |-
+          ^GCC$
+          ^G\+\+$
+          Clang
+          LLVM
+        docker_include: ".+"
+        docker_prune: "True"
+        docker_clean: "True"
+        apt_prune: "True"
+        apt_clean: "True"
+        homebrew_prune: "True"
+        homebrew_clean: "True"
+        npm_prune: "True"
+        npm_clean: "True"
+        os_swap: "True"
+
+    - name: Freeing up disk space
+      uses: easimon/maximize-build-space@master
+      with: 
+        root-reserve-mb: 2048
+        swap-size-mb: 1
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+        remove-docker-images: 'true'
+
+    - name: Free up disk space complete
+      run: |
+        echo "Free up disk space complete"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
     - name: 检查项目分支
       uses: actions/checkout@main
-      
-    - name: 清理磁盘空间
-      uses: jlumbroso/free-disk-space@main
-      with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: false
 
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        docker-images: true
-        swap-storage: true
-        
     - name: 安装编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -80,14 +109,10 @@ jobs:
       run: df -hT
            
     - name: 下载固件源码
-      working-directory: /workdir
+      working-directory: ./
       run: |
-        df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd openwrt
-        useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
-        echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         
     - name: 加载自定义设置
