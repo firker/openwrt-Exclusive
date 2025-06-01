@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-lede6.6
+name: OpenWrt-lede6.12
 
 on:
   repository_dispatch:
@@ -211,7 +211,7 @@ jobs:
       uses: ncipollo/release-action@v1
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        name: ${{ env.FILE_TIME }} 「 openwrt-6.6-X86-64 」
+        name: ${{ env.FILE_TIME }} 「 openwrt-6.12-X86-64 」
         allowUpdates: true
         tag: ${{ env.TAG_TIME }}
         commit: main
@@ -240,4 +240,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
     - name: TG推送
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅱️恭喜主人X86-openwrt6.6-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅱️恭喜主人X86-openwrt6.12-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
