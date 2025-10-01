@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: OpenWrt-lede6.12-2410
+name: OpenWrt-lede6.12-2305
 
 on:
   repository_dispatch:
@@ -164,7 +164,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_62410${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OpenWrt_2305${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
 
@@ -188,7 +188,7 @@ jobs:
         commit: main
         token: ${{ secrets.RELEASE_TOKEN }}
         body: |
-          功能介绍：该版本luci为2410，内核版本6.12，目前包含passwall、mosdns、Docker、lucky、微信推送等基础插件，其他功能可以用docker来实现，满足普通用户使用了。
+          功能介绍：该版本luci为2305，内核版本6.12，目前包含passwall、mosdns、Docker、lucky、微信推送等基础插件，其他功能可以用docker来实现，满足普通用户使用了。
           [固件源码](https://github.com/coolsnowwolf/lede)
           由衷感谢所有为openwrt无私奉献的大佬们
           📥 固件下载
@@ -211,4 +211,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         
     - name: TG推送
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅰️恭喜主人X86-openwrt22410自用版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}"
+      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅰️恭喜主人X86-openwrt2305自用版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}"
